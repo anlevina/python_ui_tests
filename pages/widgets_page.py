@@ -7,7 +7,7 @@ from selenium.webdriver.support.select import Select
 from generator.generator import generated_color, generated_date
 from locators.widgets_page_locators import AccordianLocators, AutocompleteLocators, DatePickerLocators, SliderLocators, \
     ProgressBarLocators, TabsLocators, TooltipsLocators, MenuLocators
-from pages_actions.base_page import BasePage
+from pages.base_page import BasePage
 
 
 class AccordianPage(BasePage):

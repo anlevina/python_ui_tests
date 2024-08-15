@@ -1,7 +1,7 @@
 import allure
 import pytest
 
-from pages_actions.interactions_page import SortablePage, SelectablePage, ResizeablePage, DroppablePage, DraggablePage
+from pages.interactions_page import SortablePage, SelectablePage, ResizeablePage, DroppablePage, DraggablePage
 
 
 @allure.suite('Interactions')

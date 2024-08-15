@@ -7,7 +7,7 @@ from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 
 from generator.generator import generated_person, generated_file
-from pages_actions.base_page import BasePage
+from pages.base_page import BasePage
 from locators.elements_page_locators import (TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators,
                                              WebPageLocators, DifferentClicksLocators, LinksLocators,
                                              DownloadUploadLocators, DynamicPropertiesLocators)
