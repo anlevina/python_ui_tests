@@ -1,5 +1,3 @@
-import sys
-
 import pytest
 
 from selenium import webdriver
@@ -15,9 +13,6 @@ chrome_options.add_argument("--disable-default-apps")
 chrome_options.add_argument("--disable-popup-blocking")
 chrome_options.add_argument("--disable-search-engine-choice-screen")
 chrome_options.add_argument("--disable-extensions")
-
-
-sys.path.append('C:/Users/Ana/PycharmProjects/python_ui_tests')
 
 
 @pytest.fixture()
