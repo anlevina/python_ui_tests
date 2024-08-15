@@ -1,7 +1,7 @@
 import allure
 import pytest
 
-from pages.alerts_frame_windows_page import BrowserWindowsPage, AlertsPage, FramesPage, NestedFramesPage, \
+from pages_actions.alerts_frame_windows_page import BrowserWindowsPage, AlertsPage, FramesPage, NestedFramesPage, \
     ModalDialogsPage
 
 

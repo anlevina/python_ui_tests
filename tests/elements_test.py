@@ -4,7 +4,7 @@ import time
 import allure
 import pytest
 
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, DifferentClicksPage, \
+from pages_actions.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, DifferentClicksPage, \
     LinksPage, DownloadUploadPage, DynamicPropertiesPage
 
 

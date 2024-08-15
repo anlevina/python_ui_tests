@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 from generator.generator import (generated_person, generated_file, generated_subject, generated_state_and_city,
                                  generated_date)
 from locators.practice_form_locators import PracticeFormPageLocators
-from pages.base_page import BasePage
+from pages_actions.base_page import BasePage
 
 
 class PracticeFormPage(BasePage):

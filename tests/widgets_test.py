@@ -1,7 +1,7 @@
 import allure
 import pytest
 
-from pages.widgets_page import AccordianPage, AutocompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabsPage, \
+from pages_actions.widgets_page import AccordianPage, AutocompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabsPage, \
     TooltipsPage, MenuPage
 
 

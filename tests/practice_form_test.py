@@ -1,6 +1,6 @@
 import allure
 
-from pages.practice_form_page import PracticeFormPage
+from pages_actions.practice_form_page import PracticeFormPage
 
 
 @allure.suite('Practice form page')

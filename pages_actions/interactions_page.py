@@ -4,7 +4,7 @@ import re
 
 from locators.interactions_page_locators import SortableLocators, SelectableLocators, ResizeableLocators, \
     DroppableLocators, DraggableLocators
-from pages.base_page import BasePage
+from pages_actions.base_page import BasePage
 
 
 class SortablePage(BasePage):
