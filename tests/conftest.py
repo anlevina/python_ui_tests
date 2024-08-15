@@ -14,6 +14,7 @@ chrome_options.add_argument("--disable-popup-blocking")
 chrome_options.add_argument("--disable-search-engine-choice-screen")
 chrome_options.add_argument("--disable-extensions")
 
+
 @pytest.fixture()
 def driver():
     driver_service = Service(ChromeDriverManager().install())
