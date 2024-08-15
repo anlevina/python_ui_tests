@@ -4,9 +4,6 @@ import pytest
 from pages.alerts_frame_windows_page import BrowserWindowsPage, AlertsPage, FramesPage, NestedFramesPage, \
     ModalDialogsPage
 
-import sys
-import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 @allure.suite('Alerts, Frames and Windows page')
 class TestAlertsFrameWindows:
