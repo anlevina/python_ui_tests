@@ -1,4 +1,5 @@
 import random
+from pathlib import Path
 
 from faker import Faker
 
@@ -8,6 +9,8 @@ from data.data import Date
 
 faker_en = Faker('en_US')
 Faker.seed()
+
+base_dir = Path.home() / 'PycharmProjects' / 'python_ui_tests' / 'file_for_test'
 
 
 def generated_person():
@@ -27,7 +30,9 @@ def generated_person():
 
 def generated_file():
 
-    path = rf'C:\Users\Ana\PycharmProjects\python_ui_tests\file_for_test{random.randint(0, 10)}.txt'
+    file_name = f'file_for_test{random.randint(0, 10)}.txt'
+    # path = rf'C:\Users\Ana\PycharmProjects\python_ui_tests\file_for_test{random.randint(0, 10)}.txt'
+    path = base_dir / file_name
     file = open(path, 'w+')
     file.write(f'Hello {random.randint(0, 666)}')
     file.close()

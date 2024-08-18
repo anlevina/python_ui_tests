@@ -6,7 +6,7 @@ on:
       deployment_target:
         description: Choose target
         required: true
-        default: elements_page_test
+        default: all_tests
         type: choice
         options:
           - all_tests
