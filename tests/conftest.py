@@ -7,12 +7,13 @@ from selenium.webdriver.chrome.options import Options
 
 
 chrome_options = Options()
-chrome_options.add_argument("--no-first-run")
-chrome_options.add_argument("--no-default-browser-check")
-chrome_options.add_argument("--disable-default-apps")
-chrome_options.add_argument("--disable-popup-blocking")
-chrome_options.add_argument("--disable-search-engine-choice-screen")
-chrome_options.add_argument("--disable-extensions")
+chrome_options.add_argument('--no-first-run')
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-default-browser-check')
+chrome_options.add_argument('--disable-default-apps')
+chrome_options.add_argument('--disable-popup-blocking')
+chrome_options.add_argument('--disable-search-engine-choice-screen')
+chrome_options.add_argument('--disable-extensions')
 
 
 @pytest.fixture()
