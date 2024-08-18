@@ -9,6 +9,7 @@ on:
         default: elements_page_test
         type: choice
         options:
+          - all_tests
           - elements_page_test
           - alerts_frame_windows_page_test
           - interactions_page_test
@@ -43,22 +44,31 @@ jobs:
         sudo apt install ./google-chrome-stable_current_amd64.deb
         google-chrome --version
 
+    - name: all_tests
+      if: "github.event.inputs.deployment_target == 'all_tests'"
+      run: |
+        pytest
+
     - name: elements_page_test
       if: "github.event.inputs.deployment_target == 'elements_page_test'"
       run: |
         pytest tests/elements_test.py
+
     - name: alerts_frame_windows_page_test
       if: "github.event.inputs.deployment_target == 'alerts_frame_windows_page_test'"
       run: |
         pytest tests/alerts_frame_windows_test.py
+
     - name: interactions_page_test
       if: "github.event.inputs.deployment_target == 'interactions_page_test'"
       run: |
         pytest tests/interactions_test.py
+
     - name: practice_form_page_test
       if: "github.event.inputs.deployment_target == 'practice_form_page_test'"
       run: |
         pytest tests/practice_form_test.py
+
     - name: widgets_page_test
       if: "github.event.inputs.deployment_target == 'widgets_page_test'"
       run: |
