@@ -10,8 +10,6 @@ from data.data import Date
 faker_en = Faker('en_US')
 Faker.seed()
 
-base_dir = Path.home() / 'PycharmProjects' / 'python_ui_tests' / 'file_for_test'
-
 
 def generated_person():
     yield Person(
@@ -32,11 +30,13 @@ def generated_file():
 
     file_name = f'file_for_test{random.randint(0, 10)}.txt'
     # path = rf'C:\Users\Ana\PycharmProjects\python_ui_tests\file_for_test{random.randint(0, 10)}.txt'
+    base_dir = Path.cwd() / 'file_for_test'
     path = base_dir / file_name
+    base_dir.mkdir(parents=True, exist_ok=True)
     file = open(path, 'w+')
     file.write(f'Hello {random.randint(0, 666)}')
     file.close()
-    return file.name, path
+    return file_name, str(path)
 
 
 def generated_subject():
