@@ -44,6 +44,15 @@ jobs:
         sudo apt install ./google-chrome-stable_current_amd64.deb
         google-chrome --version
 
+    - name: Run tests
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y wget unzip
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo apt install ./google-chrome-stable_current_amd64.deb
+        sudo apt install ./google-chrome-stable_current_amd64.deb
+        google-chrome --version
+
     - name: all_tests
       if: "github.event.inputs.deployment_target == 'all_tests'"
       run: |
