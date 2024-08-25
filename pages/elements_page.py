@@ -278,7 +278,7 @@ class DownloadUploadPage(BasePage):
         file_name, path = generated_file()
         self.element_is_visible(self.locators.UPLOAD_FILE).send_keys(path)
         os.remove(path)
-        return path.split('\\')[-1]
+        return file_name.split('\\')[-1]
 
     def check_uploaded_file(self):
         file_path = self.element_is_present(self.locators.UPLOADED_FILE_PATH).text
