@@ -1,4 +1,5 @@
 import random
+from pathlib import Path
 
 from faker import Faker
 
@@ -27,11 +28,14 @@ def generated_person():
 
 def generated_file():
 
-    path = rf'C:\Users\Ana\PycharmProjects\python_ui_tests\file_for_test{random.randint(0, 10)}.txt'
+    file_name = f'file_for_test{random.randint(0, 10)}.txt'
+    base_dir = Path.cwd()
+    path = base_dir / file_name
+    base_dir.mkdir(parents=True, exist_ok=True)
     file = open(path, 'w+')
     file.write(f'Hello {random.randint(0, 666)}')
     file.close()
-    return file.name, path
+    return file_name, str(path)
 
 
 def generated_subject():

@@ -16,6 +16,9 @@ chrome_options.add_argument('--disable-search-engine-choice-screen')
 chrome_options.add_argument('--disable-extensions')
 
 
+sys.path.append('C:/Users/Ana/PycharmProjects/python_ui_tests')
+
+
 @pytest.fixture()
 def driver():
     driver_service = Service(ChromeDriverManager().install())
@@ -23,10 +26,3 @@ def driver():
     driver.maximize_window()
     yield driver
     driver.quit()
-
-# @pytest.fixture()
-# def driver():
-#     driver = webdriver.Chrome()
-#     driver.maximize_window()
-#     yield driver
-#     driver.quit()

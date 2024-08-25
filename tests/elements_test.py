@@ -138,7 +138,7 @@ class TestElements:
             different_clicks_page.double_click()
             double_click_message = different_clicks_page.double_click_message()
 
-            assert double_click_message == 'You have clicked a double click'
+            assert double_click_message == 'You have done a double click'
 
         @allure.title('Perform right click')
         def test_right_click(self, driver):
@@ -148,7 +148,7 @@ class TestElements:
             different_clicks_page.right_click()
             right_click_message = different_clicks_page.right_click_message()
 
-            assert right_click_message == 'You have clicked a right click'
+            assert right_click_message == 'You have done a right click'
 
         @allure.title('Perform dynamic click')
         def test_single_click(self, driver):
@@ -158,7 +158,7 @@ class TestElements:
             different_clicks_page.single_click(driver)
             single_click_message = different_clicks_page.single_click_message()
 
-            assert single_click_message == 'You have clicked a dynamic click'
+            assert single_click_message == 'You have done a dynamic click'
 
     @allure.feature('Normal and broken links')
     class TestLinks:

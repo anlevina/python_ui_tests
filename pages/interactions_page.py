@@ -190,7 +190,7 @@ class DraggablePage(BasePage):
         self.element_is_visible(self.locators.SIMPLE_TAB).click()
         drag_div = self.element_is_visible(self.locators.SIMPLE_DRAG_ME_ELEMENT)
         position_before, position_after = self.get_drag_element_position(drag_div,
-                                                                         random.randint(0, 300), random.randint(0, 300))
+                                                                         random.randint(0, 200), random.randint(0, 200))
         return position_before, position_after
 
     def get_top_position(self, positions):
