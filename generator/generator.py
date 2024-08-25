@@ -29,8 +29,7 @@ def generated_person():
 def generated_file():
 
     file_name = f'file_for_test{random.randint(0, 10)}.txt'
-    # path = rf'C:\Users\Ana\PycharmProjects\python_ui_tests\file_for_test{random.randint(0, 10)}.txt'
-    base_dir = Path.cwd() / 'file_for_test'
+    base_dir = Path.cwd()
     path = base_dir / file_name
     base_dir.mkdir(parents=True, exist_ok=True)
     file = open(path, 'w+')
