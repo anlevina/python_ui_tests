@@ -127,9 +127,9 @@ class DatePickerPage(BasePage):
         input_date = self.element_is_visible(self.locators.DATE_INPUT)
         input_date_before = input_date.get_attribute('value')
         input_date.click()
-        self.set_date_item_from_list(self.locators.DATE_SELECT_DAY_LIST, date.day)
         self.set_date_by_text(self.locators.DATE_SELECT_MONTH, date.month)
         self.set_date_by_text(self.locators.DATE_SELECT_YEAR, date.year)
+        self.set_date_item_from_list(self.locators.DATE_SELECT_DAY_LIST, date.day)
         input_date_after = input_date.get_attribute('value')
         return input_date_before, input_date_after
 
