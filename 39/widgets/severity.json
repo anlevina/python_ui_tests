@@ -1,0 +1,1 @@
+[{"uid":"90c8283a53370f54","name":"test_fill_all_practice_form_fields","time":{"start":1725100658323,"stop":1725100658323,"duration":0},"status":"broken","severity":"normal"},{"uid":"eaa34fc47ffae6f5","name":"test_fill_only_mandatory_practice_form_fields","time":{"start":1725100659088,"stop":1725100659088,"duration":0},"status":"broken","severity":"normal"}]
