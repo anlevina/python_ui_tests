@@ -1,0 +1,4 @@
+.idea
+venv
+allure_results
+testingfile.py
