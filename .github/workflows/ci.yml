@@ -47,32 +47,32 @@ jobs:
     - name: all_tests
       if: "github.event.inputs.deployment_target == 'all_tests'"
       run: |
-        pytest
+        pytest --alluredir=allure-results
 
     - name: elements_page_test
       if: "github.event.inputs.deployment_target == 'elements_page_test'"
       run: |
-        pytest tests/elements_test.py
+        pytest tests/elements_test.py --alluredir=allure-results
 
     - name: alerts_frame_windows_page_test
       if: "github.event.inputs.deployment_target == 'alerts_frame_windows_page_test'"
       run: |
-        pytest tests/alerts_frame_windows_test.py
+        pytest tests/alerts_frame_windows_test.py --alluredir=allure-results
 
     - name: interactions_page_test
       if: "github.event.inputs.deployment_target == 'interactions_page_test'"
       run: |
-        pytest tests/interactions_test.py
+        pytest tests/interactions_test.py --alluredir=allure-results
 
     - name: practice_form_page_test
       if: "github.event.inputs.deployment_target == 'practice_form_page_test'"
       run: |
-        pytest tests/practice_form_test.py
+        pytest tests/practice_form_test.py --alluredir=allure-results
 
     - name: widgets_page_test
       if: "github.event.inputs.deployment_target == 'widgets_page_test'"
       run: |
-        pytest tests/widgets_test.py
+        pytest tests/widgets_test.py --alluredir=allure-results
         
     - name: Get Allure history
       uses: actions/checkout@v3
