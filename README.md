@@ -6,7 +6,7 @@ The project was created  to demonstrate proficiency in handling various web elem
 Some tests in the project work better when run locally. If you want to run the project locally, please use the following command:
 > pytest -s -m
 > 
-And the following command if you want to generate a report locally:
+And the following commands if you want to generate a report locally:
 
 > pytest --alluredir="allure_results"
 > 
