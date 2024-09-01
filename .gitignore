@@ -1,4 +1,4 @@
 .idea
-venv
-allure_results/
-testingfile.py
+/allure_results/
+/testingfile.py
+/.venv/
