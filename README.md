@@ -2,7 +2,7 @@
 
 This project covers with UI tests the website https://demoqa.com/
 
-The project was created to demonstrate skills in working with various web elements and browser logic. Naturally, in real projects, comprehensive UI tests should cover predefined flows.
+The project was created  to demonstrate proficiency in handling various web elements and browser logic. Naturally, in real projects, comprehensive UI tests should cover predefined flows.
 Some tests in the project work better when run locally. If you want to run the project locally, please use the following command:
 > pytest -s -m
 > 
