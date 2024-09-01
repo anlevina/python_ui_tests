@@ -137,7 +137,7 @@ class TestInteractions:
             draggable_page = DraggablePage(driver, 'https://demoqa.com/dragabble')
             draggable_page.open()
             draggable_page.remove_footer()
-            top_x, left_x = draggable_page.drag_restricted_x_element('x')
+            top_x, left_x = draggable_page.drag_one_axis_restricted_element('x')
 
             assert top_x[0] == top_x[1], 'Element has moved on axis Y.'
             assert left_x[1] != left_x[0], 'Element has not moved on axis X.'
@@ -147,7 +147,7 @@ class TestInteractions:
             draggable_page = DraggablePage(driver, 'https://demoqa.com/dragabble')
             draggable_page.open()
             draggable_page.remove_footer()
-            top_x, left_x = draggable_page.drag_restricted_x_element('y')
+            top_x, left_x = draggable_page.drag_one_axis_restricted_element('y')
 
             assert left_x[0] == left_x[1], 'Element has moved on axis X.'
             assert top_x[1] != top_x[0], 'Element has not moved on axis Y.'

@@ -142,7 +142,7 @@ class TestAlertsFrameWindows:
             modal_dialogs_page = ModalDialogsPage(driver, 'https://demoqa.com/modal-dialogs')
             modal_dialogs_page.open()
             modal_dialogs_page.remove_footer()
-            title, text_length = modal_dialogs_page.check_small_modal_dialog(modal)
+            title, text_length = modal_dialogs_page.check_modal_dialog(modal)
 
             assert title == expected_title, 'Another modal dialog title is expected'
             assert text_length == expected_text_length, 'Another modal dialog text is expected'

@@ -2,6 +2,8 @@ import random
 import time
 import re
 
+import allure
+
 from locators.interactions_page_locators import SortableLocators, SelectableLocators, ResizeableLocators, \
     DroppableLocators, DraggableLocators
 from pages.base_page import BasePage
@@ -11,10 +13,12 @@ class SortablePage(BasePage):
 
     locators = SortableLocators()
 
+    @allure.step('Get initial order of elements')
     def get_order_of_elements(self, elements):
         item_list = self.elements_are_visible(elements)
         return [item.text for item in item_list]
 
+    @allure.step('Change order of elements')
     def change_order_of_elements(self, tab):
 
         tabs = {
@@ -45,6 +49,7 @@ class SelectablePage(BasePage):
 
     locators = SelectableLocators()
 
+    @allure.step('Select active elements')
     def select_active_elements(self, elements):
         elements_list = self.elements_are_visible(elements)
         random_number_of_elements = random.randint(1, len(elements_list))
@@ -55,6 +60,7 @@ class SelectablePage(BasePage):
             selected_elements.append(element.text)
         return random_number_of_elements, selected_elements
 
+    @allure.step('Select and check elements')
     def select_and_check_elements(self, tab):
 
         elements_tabs = {
@@ -83,16 +89,19 @@ class ResizeablePage(BasePage):
 
     locators = ResizeableLocators()
 
+    @allure.step('Get width and height of element')
     def get_width_height(self, value_of_size):
         width = value_of_size.split(';')[0].split(':')[1].replace(' ', '')
         height = value_of_size.split(';')[1].split(':')[1].replace(' ', '')
         return width, height
 
+    @allure.step('Get max and min size of element')
     def get_max_min_size(self, element):
         size = self.element_is_present(element)
         size_value = size.get_attribute('style')
         return size_value
 
+    @allure.step('Get resizeable box')
     def change_resizeable_box(self, resizeable_element, max_x_coord, max_y_coord, min_x_coord, min_y_coord):
 
         resizeable_elements = {
@@ -120,6 +129,7 @@ class DroppablePage(BasePage):
 
     locators = DroppableLocators()
 
+    @allure.step('Drop single element')
     def drop_simple_element(self):
         self.element_is_visible(self.locators.SIMPLE_TAB).click()
         drag_div = self.element_is_visible(self.locators.SIMPLE_DRAG_ME_ELEMENT)
@@ -127,6 +137,7 @@ class DroppablePage(BasePage):
         self.action_drag_and_drop_to_element(drag_div, drop_div)
         return drop_div.text
 
+    @allure.step('Drop an element and check if it has been accepted')
     def drop_element(self, element):
 
         elements = {
@@ -141,6 +152,7 @@ class DroppablePage(BasePage):
         drop_box_text = drop_div.text
         return drop_box_text
 
+    @allure.step('Drop prevent element')
     def drop_prevent_element(self):
         self.element_is_visible(self.locators.PREVENT_TAB).click()
         drag_div = self.element_is_visible(self.locators.PREVENT_DRAG_ELEMENT)
@@ -154,6 +166,7 @@ class DroppablePage(BasePage):
         text_greedy_inner_box = greedy_inner_box.text
         return text_not_greedy_box, text_not_greedy_inner_box, text_greedy_box, text_greedy_inner_box
 
+    @allure.step('Drop will revert element')
     def drop_will_revert_element(self, element):
 
         elements = {
@@ -175,17 +188,20 @@ class DraggablePage(BasePage):
 
     locators = DraggableLocators()
 
+    @allure.step('Drag and element and check it"s position')
     def drag_element_and_get_position(self, drag_element, x_coords, y_coords):
         self.action_drag_and_drop_by_offset(drag_element, x_coords, y_coords)
         time.sleep(2)
         position = drag_element.get_attribute('style')
         return position
 
+    @allure.step('Check coordinates of before and after position of element')
     def get_drag_element_position(self, drag_element, x_coords, y_coords):
         position_before = self.drag_element_and_get_position(drag_element, x_coords, y_coords)
         position_after = self.drag_element_and_get_position(drag_element, x_coords, y_coords)
         return position_before, position_after
 
+    @allure.step('Drag simple element')
     def drag_simple_element(self):
         self.element_is_visible(self.locators.SIMPLE_TAB).click()
         drag_div = self.element_is_visible(self.locators.SIMPLE_DRAG_ME_ELEMENT)
@@ -193,13 +209,16 @@ class DraggablePage(BasePage):
                                                                          random.randint(0, 200), random.randint(0, 200))
         return position_before, position_after
 
+    @allure.step('Get top position')
     def get_top_position(self, positions):
         return re.findall(r'\d[0-9]|\d', positions.split(';')[2])
 
+    @allure.step('Get left position')
     def get_left_position(self, positions):
         return re.findall(r'\d[0-9]|\d', positions.split(';')[1])
 
-    def drag_restricted_x_element(self, element):
+    @allure.step('Drag one axis restricted element')
+    def drag_one_axis_restricted_element(self, element):
 
         elements = {
             'x': self.locators.ONLY_X_ELEMENT,

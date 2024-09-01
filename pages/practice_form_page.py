@@ -1,6 +1,7 @@
 import os
 import random
 
+import allure
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
@@ -14,6 +15,7 @@ class PracticeFormPage(BasePage):
 
     locators = PracticeFormPageLocators()
 
+    @allure.step('Set date item from list')
     def set_date_item_from_list(self, elements, value):
         item_list = self.elements_are_present(elements)
         for item in item_list:
@@ -21,6 +23,7 @@ class PracticeFormPage(BasePage):
                 item.click()
                 break
 
+    @allure.step('Set date of birth')
     def set_dob(self):
         dob = next(generated_date())
         dob_field = self.element_is_visible(self.locators.DATE_OF_BIRTH)
@@ -32,6 +35,7 @@ class PracticeFormPage(BasePage):
         dob_value_after = dob_field.get_attribute('value')
         return dob_value_before, dob_value_after
 
+    @allure.step('Set hobbies')
     def set_hobbies(self):
         hobbies = [self.locators.HOBBY_SPORTS, self.locators.HOBBY_READING, self.locators.HOBBY_MUSIC]
         hobbies_sample = random.sample(hobbies, k=(random.randint(1,3)))
@@ -43,6 +47,7 @@ class PracticeFormPage(BasePage):
         data_to_string = ', '.join(data)
         return data_to_string
 
+    @allure.step('Set subjects')
     def set_subjects(self):
         subjects = generated_subject()
         data = []
@@ -53,6 +58,7 @@ class PracticeFormPage(BasePage):
             data.append(subject)
         return data
 
+    @allure.step('Get subjects')
     def get_subjects(self):
         selected_subjects = self.elements_are_visible(self.locators.SUBJECTS_ELEMENTS)
         data = []
@@ -61,6 +67,7 @@ class PracticeFormPage(BasePage):
         data_to_string = ', '.join(data)
         return data_to_string
 
+    @allure.step('Set state and city')
     def set_state_and_city(self, driver):
         state, city = generated_state_and_city()
 
@@ -84,6 +91,7 @@ class PracticeFormPage(BasePage):
                             f'//div[@id="stateCity-wrapper"]//div[text()="{state_and_city_dict[entity]['name']}"]')
             option_to_select_state.click()
 
+    @allure.step('Get state and city')
     def get_state_and_city(self):
         state_and_city_list = self.elements_are_visible(self.locators.STATE_AND_CITY_FIELDS)
         state_and_city = []
@@ -92,12 +100,14 @@ class PracticeFormPage(BasePage):
         state, city = state_and_city[0], state_and_city[1]
         return state, city
 
+    @allure.step('Upload file')
     def upload_file(self):
         file_name, path = generated_file()
         self.element_is_visible(self.locators.UPLOAD_PICTURE).send_keys(path)
         os.remove(path)
         return path.split('\\')[-1]
 
+    @allure.step('Fill all fields')
     def fill_all_fields(self):
         person_info = next(generated_person())
         first_name = person_info.first_name
@@ -126,6 +136,7 @@ class PracticeFormPage(BasePage):
         return (first_name, last_name, email, gender.text, mobile, dob_value_before, dob_value_after, selected_subjects,
                 hobbies, current_address, state, city)
 
+    @allure.step('Fill only mandatory fields')
     def fill_only_mandatory_fields(self):
         person_info = next(generated_person())
         first_name = person_info.first_name
@@ -143,12 +154,15 @@ class PracticeFormPage(BasePage):
 
         return first_name, last_name, gender.text, mobile, dob_value_before, dob_value_after
 
+    @allure.step('Click submit button')
     def submit(self):
         self.element_is_visible(self.locators.SUBMIT).click()
 
+    @allure.step('Click close button')
     def close(self):
         self.element_is_visible(self.locators.CLOSE).click()
 
+    @allure.step('Get results from final table')
     def form_result(self):
         result_list = self.elements_are_visible(self.locators.RESULT_TABLE)
         result_text = [i.text for i in result_list]

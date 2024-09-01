@@ -1,6 +1,7 @@
 import random
 import time
 
+import allure
 from selenium.webdriver import Keys
 from selenium.webdriver.support.select import Select
 
@@ -14,6 +15,7 @@ class AccordianPage(BasePage):
 
     locators = AccordianLocators()
 
+    @allure.step('Check accordian with one paragraph')
     def check_accordian_with_one_paragraph(self, accordian_number):
 
         accordian = {
@@ -38,6 +40,7 @@ class AccordianPage(BasePage):
 
         return accordian_header.text, len(accordian_content)
 
+    @allure.step('Check accordian with several paragraphs')
     def check_accordian_with_several_paragraphs(self):
 
         accordian_header = self.element_is_visible(self.locators.SECOND_SECTION)
@@ -54,6 +57,7 @@ class AutocompletePage(BasePage):
 
     locators = AutocompleteLocators()
 
+    @allure.step('Add colors to multiple autocomplete field')
     def add_colors_to_multiple_autocomplete(self):
         colors = random.sample(next(generated_color()).color_name, k=random.randint(2, 7))
 
@@ -64,6 +68,7 @@ class AutocompletePage(BasePage):
 
         return colors
 
+    @allure.step('Remove value from multiple autocomplete field')
     def remove_value_from_multiple_color_field(self):
         count_value_before = len(self.elements_are_visible(self.locators.MULTIPLE_COLOR_BOX))
         remove_buttons_list = self.elements_are_visible(self.locators.MULTIPLE_COLOR_REMOVE)
@@ -74,6 +79,7 @@ class AutocompletePage(BasePage):
 
         return count_value_before, count_value_after
 
+    @allure.step('Check colors in multiple autocomplete field')
     def check_color_in_multiple_input(self):
         color_list = self.elements_are_present(self.locators.MULTIPLE_COLOR_BOX)
         colors = []
@@ -81,6 +87,7 @@ class AutocompletePage(BasePage):
             colors.append(color.text)
         return colors
 
+    @allure.step('Add color to single input field')
     def add_color_to_single_input(self):
         color = random.sample(next(generated_color()).color_name, k=1)
         single_color = self.element_is_visible(self.locators.SINGLE_COLOR_INPUT)
@@ -88,6 +95,7 @@ class AutocompletePage(BasePage):
         single_color.send_keys(Keys.ENTER)
         return color[0]
 
+    @allure.step('Check color in single input field')
     def check_single_color(self):
         color = self.element_is_visible(self.locators.SINGLE_COLOR_VALUE)
         return color.text
@@ -97,11 +105,13 @@ class DatePickerPage(BasePage):
 
     locators = DatePickerLocators()
 
+    @allure.step('Set date by text')
     def set_date_by_text(self, element, value):
         select = Select(self.element_is_present(element))
         select.select_by_visible_text(value)
 
-    def set_date_item_from_list(self, elements, value):
+    @allure.step('Find day in list')
+    def set_day_item_from_list(self, elements, value):
         item_list = self.elements_are_present(elements)
         for item in item_list:
             if item.text == value:
@@ -109,6 +119,7 @@ class DatePickerPage(BasePage):
                 time.sleep(1)
                 break
 
+    @allure.step('Find year in list')
     def find_year_in_list(self, years_list, year):
         while True:
             visible_years_elements = self.elements_are_visible(years_list)
@@ -122,6 +133,7 @@ class DatePickerPage(BasePage):
                 for i in range(11):
                     self.element_is_visible(self.locators.UPCOMING_YEARS).click()
 
+    @allure.step('Set date')
     def set_date(self):
         date = next(generated_date())
         input_date = self.element_is_visible(self.locators.DATE_INPUT)
@@ -129,10 +141,11 @@ class DatePickerPage(BasePage):
         input_date.click()
         self.set_date_by_text(self.locators.DATE_SELECT_MONTH, date.month)
         self.set_date_by_text(self.locators.DATE_SELECT_YEAR, date.year)
-        self.set_date_item_from_list(self.locators.DATE_SELECT_DAY_LIST, date.day)
+        self.set_day_item_from_list(self.locators.DATE_SELECT_DAY_LIST, date.day)
         input_date_after = input_date.get_attribute('value')
         return input_date_before, input_date_after
 
+    @allure.step('Set date and time')
     def set_date_and_time(self):
         date = next(generated_date())
         input_date = self.element_is_visible(self.locators.DATE_AND_TIME_INPUT)
@@ -140,11 +153,11 @@ class DatePickerPage(BasePage):
         input_date.click()
         self.element_is_visible(self.locators.DATE_AND_TIME_SELECT_YEAR).click()
         self.find_year_in_list(self.locators.DATE_AND_TIME_SELECT_YEAR_LIST, date.year)
-        self.set_date_item_from_list(self.locators.DATE_AND_TIME_SELECT_YEAR_LIST, date.year)
+        self.set_day_item_from_list(self.locators.DATE_AND_TIME_SELECT_YEAR_LIST, date.year)
         self.element_is_visible(self.locators.DATE_AND_TIME_SELECT_MONTH).click()
-        self.set_date_item_from_list(self.locators.DATE_AND_TIME_SELECT_MONTH_LIST, date.month)
-        self.set_date_item_from_list(self.locators.DATE_SELECT_DAY_LIST, date.day)
-        self.set_date_item_from_list(self.locators.DATE_AND_TIME_SELECT_TIME_LIST, date.time)
+        self.set_day_item_from_list(self.locators.DATE_AND_TIME_SELECT_MONTH_LIST, date.month)
+        self.set_day_item_from_list(self.locators.DATE_SELECT_DAY_LIST, date.day)
+        self.set_day_item_from_list(self.locators.DATE_AND_TIME_SELECT_TIME_LIST, date.time)
         input_date_time_after = input_date.get_attribute('value')
         return input_date_time_before, input_date_time_after
 
@@ -153,10 +166,12 @@ class SliderPage(BasePage):
 
     locators = SliderLocators()
 
+    @allure.step('Check slider value')
     def check_slider_value(self):
         slider_value = self.element_is_visible(self.locators.SLIDER_VALUE_INPUT)
         return slider_value.get_attribute('value')
 
+    @allure.step('Move slider')
     def move_slider(self):
 
         slider_input = self.element_is_visible(self.locators.SLIDER_BAR_INPUT)
@@ -167,10 +182,12 @@ class ProgressBarPage(BasePage):
 
     locators = ProgressBarLocators()
 
+    @allure.step('Check progress bar value')
     def check_progress_bar_value(self):
         progress_bar_value = self.element_is_present(self.locators.PROGRESS_BAR_VALUE).text
         return progress_bar_value
 
+    @allure.step('Click start/stop button')
     def click_start_stop_button(self):
         self.element_is_visible(self.locators.START_STOP_BUTTON).click()
         time.sleep(random.randint(2, 6))
@@ -181,6 +198,7 @@ class TabsPage(BasePage):
 
     locators = TabsLocators()
 
+    @allure.step('Check content of tabs')
     def check_tabs(self, tab_name):
 
         tabs = {
@@ -208,6 +226,7 @@ class TooltipsPage(BasePage):
 
     locators = TooltipsLocators()
 
+    @allure.step('Get text from tooltip')
     def get_tooltip_text(self, hover_element, wait_element):
         element = self.element_is_present(hover_element)
         self.action_move_to_element(element)
@@ -217,6 +236,7 @@ class TooltipsPage(BasePage):
         tooltip_text = self.element_is_visible(self.locators.TOOLTIPS_TEXT).text
         return tooltip_text
 
+    @allure.step('Check tooltip text by element')
     def check_tooltip_text_by_element(self, tooltip_element):
 
         tooltips = {
@@ -247,6 +267,7 @@ class MenuPage(BasePage):
 
     locators = MenuLocators()
 
+    @allure.step('Check menu items')
     def check_menu_items(self):
 
         menu_item_list = self.elements_are_present(self.locators.MENU_ITEMS_LIST)
