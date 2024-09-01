@@ -19,7 +19,7 @@ And the following commands if you want to generate a report locally:
 - GitHub (GitHub Actions, GitHub Pages)
 
 ## Allure report
-Click <a href="https://anlevina.github.io/python_ui_tests/50/">here</a> to open example of allure report.
+Click <a href="https://anlevina.github.io/python_ui_tests/50/">here</a> to open an example of allure report.
 <p align="center">  
 <img src="images/full_ui_report.png" width="850"/>
 </p>
