@@ -15,6 +15,7 @@ And the following commands if you want to generate a report locally:
 
 ## Tools:
 - Pytest (PyCharm)
+- Selenium
 - Allure
 - GitHub (GitHub Actions, GitHub Pages)
 
